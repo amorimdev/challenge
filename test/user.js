@@ -66,7 +66,7 @@ describe('User', function() {
                     done();
                 });
         });
-        it('Should Return Error: Please, fill in all the fields.', function(done) {
+        it('Should Return Error: Please, fill in all the required fields.', function(done) {
             request(url)
                 .post('/signup')
                 .send({})

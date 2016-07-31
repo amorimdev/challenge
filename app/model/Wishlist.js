@@ -4,16 +4,13 @@ var attributes = {
     name: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
-        validate: {
-            is: /^[a-z0-9\_\-]+$/i
-        }
+        unique: true
     },
     description: {
         type: Sequelize.STRING
     },
     averageValue: {
-        type: Sequelize.STRING
+        type: Sequelize.NUMERIC
     }
 };
 

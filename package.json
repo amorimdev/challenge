@@ -1,5 +1,5 @@
 {
-  "name": "challenge",
+  "name": "Challenge",
   "version": "1.0.0",
   "description": "Desafio F(X) / Vaga Back-End / Devops",
   "main": "app.js",
@@ -15,10 +15,11 @@
     "passport-local": "^1.0.0",
     "pg": "^6.0.3",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^3.23.6"
+    "sequelize": "^3.23.6",
+    "sequelize-restful": "^0.4.3"
   },
   "apidoc": {
-    "title": "Desafio apiDoc",
+    "title": "Challenge Doc",
     "url": "http://52.67.112.155/v1"
   },
   "devDependencies": {

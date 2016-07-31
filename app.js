@@ -1,13 +1,13 @@
-var express = require('express'),
-    app = express(),
-    setupPassport = require('./app/setupPassport'),
-    appRouter = require('./app/routers/appRouter.js')(express),
-    session = require('express-session'),
-    bodyParser = require('body-parser'),
-    cookieParser = require('cookie-parser'),
-    jsonParser = bodyParser.json(),
-    SequelizeStore = require('connect-session-sequelize')(session.Store),
-    sequelize = require('./app/sequelize.js');
+var express         = require('express'),
+    app             = express(),
+    setupPassport   = require('./app/setupPassport'),
+    appRouter       = require('./app/routers/appRouter.js')(express),
+    session         = require('express-session'),
+    bodyParser      = require('body-parser'),
+    cookieParser    = require('cookie-parser'),
+    jsonParser      = bodyParser.json(),
+    SequelizeStore  = require('connect-session-sequelize')(session.Store),
+    sequelize       = require('./app/sequelize.js');
 
 var port = process.env.PORT || 3000;
 

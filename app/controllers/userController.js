@@ -39,7 +39,7 @@ var userController = {
             zipcode = req.body.zipcode;
 
         if (!name || !email || !password) {
-            return res.status(400).send({error: {code: 400, message: 'Please, fill in all the fields.'}});
+            return res.status(400).send({error: {code: 400, message: 'Please, fill in all the required fields.'}});
         }
 
         var salt = bcrypt.genSaltSync(10),

@@ -85,28 +85,28 @@
             "type": "String",
             "optional": true,
             "field": "name",
-            "description": "<p>Name of the User.</p>"
+            "description": "<p>User Name.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": true,
             "field": "email",
-            "description": "<p>Email of the User.</p>"
+            "description": "<p>User Email.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": true,
             "field": "password",
-            "description": "<p>Password of the User.</p>"
+            "description": "<p>User Password.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": true,
             "field": "zipcode",
-            "description": "<p>Zipcode of the User.</p>"
+            "description": "<p>User Zip Code.</p>"
           }
         ]
       },
@@ -225,14 +225,14 @@
             "type": "String",
             "optional": false,
             "field": "email",
-            "description": "<p>Email of the User.</p>"
+            "description": "<p>User Email.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "password",
-            "description": "<p>Password of the User.</p>"
+            "description": "<p>User Password.</p>"
           }
         ]
       },
@@ -394,28 +394,28 @@
             "type": "String",
             "optional": false,
             "field": "name",
-            "description": "<p>Name of the User.</p>"
+            "description": "<p>User Name.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "email",
-            "description": "<p>Email of the User.</p>"
+            "description": "<p>User Email.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "password",
-            "description": "<p>Password of the User.</p>"
+            "description": "<p>User Password.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": true,
             "field": "zipcode",
-            "description": "<p>Zipcode of the User.</p>"
+            "description": "<p>USer Zip Code.</p>"
           }
         ]
       },
@@ -476,7 +476,7 @@
             "type": "String",
             "optional": false,
             "field": "error.message",
-            "description": "<p>Please, fill in all the fields. OR Invalid Zip Code.</p>"
+            "description": "<p>Please, fill in all the required fields. OR Invalid Zip Code.</p>"
           }
         ],
         "409": [
@@ -506,7 +506,7 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 400 Bad Request\n{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Please, fill in all the fields.\"\n  }\n}",
+          "content": "HTTP/1.1 400 Bad Request\n{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Please, fill in all the required fields.\"\n  }\n}",
           "type": "json"
         },
         {
@@ -523,5 +523,484 @@
     },
     "filename": "app/routers/appRouter.js",
     "groupTitle": "User"
+  },
+  {
+    "type": "post",
+    "url": "/wishlist",
+    "title": "Create",
+    "name": "Create",
+    "group": "Wishlist",
+    "version": "1.0.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Wishlist Name.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "description",
+            "description": "<p>Wishlist Description.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "averageValue",
+            "description": "<p>Wishlist Average Value.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n  \"name\": \"My Wish\",\n  \"description\": \"Work on F(X)\",\n  \"averageValue\": \"123.45\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "success",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "success.message",
+            "description": "<p>Wishlist successfully created.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"success\": {\n    \"message\": \"Wishlist successfully created.\"\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "400": [
+          {
+            "group": "400",
+            "type": "Object",
+            "optional": false,
+            "field": "error",
+            "description": ""
+          },
+          {
+            "group": "400",
+            "type": "Number",
+            "optional": false,
+            "field": "error.code",
+            "description": "<p>400</p>"
+          },
+          {
+            "group": "400",
+            "type": "String",
+            "optional": false,
+            "field": "error.message",
+            "description": "<p>Please, fill in all the required fields</p>"
+          }
+        ],
+        "409": [
+          {
+            "group": "409",
+            "type": "Object",
+            "optional": false,
+            "field": "error",
+            "description": ""
+          },
+          {
+            "group": "409",
+            "type": "Number",
+            "optional": false,
+            "field": "error.code",
+            "description": "<p>409</p>"
+          },
+          {
+            "group": "409",
+            "type": "String",
+            "optional": false,
+            "field": "error.message",
+            "description": "<p>Wishlist already in use.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 400 Bad Request\n{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Please, fill in all the required fields.\"\n  }\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 409 Forbidden\n{\n  \"error\": {\n    \"code\": 409,\n    \"message\": \"Wishlist already in use.\"\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routers/appRouter.js",
+    "groupTitle": "Wishlist"
+  },
+  {
+    "type": "delete",
+    "url": "/wishlist/:id",
+    "title": "Delete",
+    "name": "Delete",
+    "group": "Wishlist",
+    "version": "1.0.0",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "success",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "success.message",
+            "description": "<p>Wishlist successfully deleted.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"success\": {\n    \"message\": \"Wishlist successfully deleted.\"\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "404": [
+          {
+            "group": "404",
+            "type": "Object",
+            "optional": false,
+            "field": "error",
+            "description": ""
+          },
+          {
+            "group": "404",
+            "type": "Number",
+            "optional": false,
+            "field": "error.code",
+            "description": "<p>404</p>"
+          },
+          {
+            "group": "404",
+            "type": "String",
+            "optional": false,
+            "field": "error.message",
+            "description": "<p>Wishlist does not found.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Forbidden\n{\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"Wishlist does not found.\"\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routers/appRouter.js",
+    "groupTitle": "Wishlist"
+  },
+  {
+    "type": "put",
+    "url": "/wishlist/:id",
+    "title": "Edit",
+    "name": "Edit",
+    "group": "Wishlist",
+    "version": "1.0.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "name",
+            "description": "<p>Wishlist Name.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "description",
+            "description": "<p>Wishlist Description.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "averageValue",
+            "description": "<p>Wishlist Average Value.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n  \"name\": \"My Wish\",\n  \"description\": \"Work on F(X)\",\n  \"averageValue\": \"123.45\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "success",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "success.message",
+            "description": "<p>Wishlist successfully updated.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"success\": {\n    \"message\": \"Wishlist successfully updated.\"\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "404": [
+          {
+            "group": "404",
+            "type": "Object",
+            "optional": false,
+            "field": "error",
+            "description": ""
+          },
+          {
+            "group": "404",
+            "type": "Number",
+            "optional": false,
+            "field": "error.code",
+            "description": "<p>404</p>"
+          },
+          {
+            "group": "404",
+            "type": "String",
+            "optional": false,
+            "field": "error.message",
+            "description": "<p>Wishlist does not found.</p>"
+          }
+        ],
+        "409": [
+          {
+            "group": "409",
+            "type": "Object",
+            "optional": false,
+            "field": "error",
+            "description": ""
+          },
+          {
+            "group": "409",
+            "type": "Number",
+            "optional": false,
+            "field": "error.code",
+            "description": "<p>409</p>"
+          },
+          {
+            "group": "409",
+            "type": "String",
+            "optional": false,
+            "field": "error.message",
+            "description": "<p>Wishlist already in use.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Forbidden\n{\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"Wishlist does not found.\"\n  }\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 409 Forbidden\n{\n  \"error\": {\n    \"code\": 409,\n    \"message\": \"Wishlist already in use.\"\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routers/appRouter.js",
+    "groupTitle": "Wishlist"
+  },
+  {
+    "type": "get",
+    "url": "/wishlist/:id",
+    "title": "List",
+    "name": "List",
+    "group": "Wishlist",
+    "version": "1.0.0",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "success",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "success.wishlist",
+            "description": "<p>Wishlist.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"success\": {\n    \"wishlist\": {}\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "404": [
+          {
+            "group": "404",
+            "type": "Object",
+            "optional": false,
+            "field": "error",
+            "description": ""
+          },
+          {
+            "group": "404",
+            "type": "Number",
+            "optional": false,
+            "field": "error.code",
+            "description": "<p>404</p>"
+          },
+          {
+            "group": "404",
+            "type": "String",
+            "optional": false,
+            "field": "error.message",
+            "description": "<p>Wishlist does not found.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Forbidden\n{\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"Wishlist does not found.\"\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routers/appRouter.js",
+    "groupTitle": "Wishlist"
+  },
+  {
+    "type": "get",
+    "url": "/wishlist",
+    "title": "ListAll",
+    "name": "ListAll",
+    "group": "Wishlist",
+    "version": "1.0.0",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "success",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "success.wishlists",
+            "description": "<p>List of user wish.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"success\": {\n    \"wishlist\": []\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "403": [
+          {
+            "group": "403",
+            "type": "Object",
+            "optional": false,
+            "field": "error",
+            "description": ""
+          },
+          {
+            "group": "403",
+            "type": "Number",
+            "optional": false,
+            "field": "error.code",
+            "description": "<p>403</p>"
+          },
+          {
+            "group": "403",
+            "type": "String",
+            "optional": false,
+            "field": "error.message",
+            "description": "<p>You not have permission to access the page.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"You not have permission to access the page.\"\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routers/appRouter.js",
+    "groupTitle": "Wishlist"
   }
 ]
