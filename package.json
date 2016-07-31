@@ -1,7 +1,7 @@
 {
-  "name": "Desafio F(X)",
+  "name": "challenge",
   "version": "1.0.0",
-  "description": "Vaga Back-End / Devops",
+  "description": "Desafio F(X) / Vaga Back-End / Devops",
   "main": "app.js",
   "author": "Jhonatan Amorim",
   "dependencies": {
