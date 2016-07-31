@@ -237,7 +237,7 @@ module.exports = function(express) {
      *
      * @apiError (409) {Object} error
      * @apiError (409) {Number} error.code      409
-     * @apiError (409) {String} error.message   Wishlist already in use.
+     * @apiError (409) {String} error.message   Wishlist create failure.
      *
      * @apiErrorExample Error-Response:
      *     HTTP/1.1 400 Bad Request
@@ -253,7 +253,7 @@ module.exports = function(express) {
      *     {
      *       "error": {
      *         "code": 409,
-     *         "message": "Wishlist already in use."
+     *         "message": "Wishlist create failure."
      *       }
      *     }
      */
@@ -357,7 +357,7 @@ module.exports = function(express) {
      *
      * @apiError (409) {Object} error
      * @apiError (409) {Number} error.code      409
-     * @apiError (409) {String} error.message   Wishlist already in use.
+     * @apiError (409) {String} error.message   Wishlist update failure.
      *
      * @apiErrorExample Error-Response:
      *     HTTP/1.1 404 Forbidden
@@ -373,7 +373,7 @@ module.exports = function(express) {
      *     {
      *       "error": {
      *         "code": 409,
-     *         "message": "Wishlist already in use."
+     *         "message": "Wishlist update failure."
      *       }
      *     }
      */

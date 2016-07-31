@@ -637,7 +637,7 @@
             "type": "String",
             "optional": false,
             "field": "error.message",
-            "description": "<p>Wishlist already in use.</p>"
+            "description": "<p>Wishlist create failure.</p>"
           }
         ]
       },
@@ -649,7 +649,7 @@
         },
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 409 Forbidden\n{\n  \"error\": {\n    \"code\": 409,\n    \"message\": \"Wishlist already in use.\"\n  }\n}",
+          "content": "HTTP/1.1 409 Forbidden\n{\n  \"error\": {\n    \"code\": 409,\n    \"message\": \"Wishlist create failure.\"\n  }\n}",
           "type": "json"
         }
       ]
@@ -841,7 +841,7 @@
             "type": "String",
             "optional": false,
             "field": "error.message",
-            "description": "<p>Wishlist already in use.</p>"
+            "description": "<p>Wishlist update failure.</p>"
           }
         ]
       },
@@ -853,7 +853,7 @@
         },
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 409 Forbidden\n{\n  \"error\": {\n    \"code\": 409,\n    \"message\": \"Wishlist already in use.\"\n  }\n}",
+          "content": "HTTP/1.1 409 Forbidden\n{\n  \"error\": {\n    \"code\": 409,\n    \"message\": \"Wishlist update failure.\"\n  }\n}",
           "type": "json"
         }
       ]

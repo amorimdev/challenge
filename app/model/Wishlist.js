@@ -3,14 +3,14 @@ var Sequelize = require('sequelize');
 var attributes = {
     name: {
         type: Sequelize.STRING,
-        allowNull: false,
-        unique: true
+        allowNull: false
     },
     description: {
         type: Sequelize.STRING
     },
     averageValue: {
-        type: Sequelize.NUMERIC
+        type: Sequelize.NUMERIC,
+        allowNull: false
     }
 };
 

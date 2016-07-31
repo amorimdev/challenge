@@ -42,7 +42,7 @@ var wishlistController = {
             return res.send({success: {message: 'Wishlist successfully created.'}});
         }).catch(function(e) {
             console.log("Got error: " + e.message);
-            return res.status(409).send({error: {code: 409, message: 'Wishlist already in use.'}});
+            return res.status(409).send({error: {code: 409, message: 'Wishlist create failure.'}});
         });
     },
     edit: function (req, res) {
@@ -62,7 +62,7 @@ var wishlistController = {
                 return res.send({success: {message: 'Wishlist successfully updated.'}});
             }).catch(function(e) {
                 console.log("Got error: " + e.message);
-                return res.status(409).send({error: {code: 409, message: 'Wishlist already in use.'}});
+                return res.status(409).send({error: {code: 409, message: 'Wishlist update failure.'}});
             });
         }).catch(function(e) {
             console.log("Got error: " + e.message);

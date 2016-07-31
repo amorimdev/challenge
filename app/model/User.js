@@ -14,10 +14,12 @@ var attributes = {
         }
     },
     password: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
     },
     salt: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
     },
     address: {
         type: Sequelize.JSONB
