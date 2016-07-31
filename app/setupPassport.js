@@ -18,7 +18,7 @@ module.exports = function(app) {
                 }
             }).then(function (user) {
                 if (user == null) {
-                    return done(null, false, {error: {code: 401, message: 'Authentication failed'}})
+                    return done(null, false, {error: {code: 401, message: 'Authentication failed.'}})
                 }
 
                 var hashedPassword = bcrypt.hashSync(password, user.salt);
@@ -27,7 +27,7 @@ module.exports = function(app) {
                     return done(null, user)
                 }
 
-                return done(null, false, {error: {code: 401, message: 'Authentication failed'}})
+                return done(null, false, {error: {code: 401, message: 'Authentication failed.'}})
             })
         }
     ));

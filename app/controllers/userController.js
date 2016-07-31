@@ -24,13 +24,13 @@ var userController = {
                     return next(err);
                 }
 
-                return res.send({success: {message: 'Authentication succeeded'}});
+                return res.send({success: {message: 'Successfully login.'}});
             });
         })(req, res, next);
     },
     logout: function (req, res) {
         req.logout();
-        res.redirect('/')
+        return res.send({success: {message: 'Successfully logout.'}});
     },
     signup: function (req, res) {
         var name = req.body.name,
