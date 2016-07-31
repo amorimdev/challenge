@@ -1,14 +1,14 @@
 {
   "title": "Desafio apiDoc",
-  "url": "http://localhost:8080/v1",
-  "name": "Desafio F(X)",
+  "url": "http://52.67.112.155/v1",
+  "name": "challenge",
   "version": "1.0.0",
-  "description": "Vaga Back-End / Devops",
+  "description": "Desafio F(X) / Vaga Back-End / Devops",
   "sampleUrl": false,
   "apidoc": "0.2.0",
   "generator": {
     "name": "apidoc",
-    "time": "2016-07-31T05:03:02.334Z",
+    "time": "2016-07-31T16:34:47.525Z",
     "url": "http://apidocjs.com",
     "version": "0.16.1"
   }
