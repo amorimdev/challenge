@@ -10,7 +10,7 @@ module.exports = function(express) {
     router.put('/edit', userController.isAuthenticated, userController.edit);
 
     /**
-     * @api {get} /v1/ Home
+     * @api {get} / Home
      * @apiName Home
      * @apiGroup DefaultController
      *
