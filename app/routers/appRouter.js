@@ -4,13 +4,13 @@ var userController = require('../controllers/userController.js'),
 module.exports = function(express) {
     var router = express.Router();
 
-    router.post('/v1/signup', userController.signup);
-    router.post('/v1/login', userController.login);
-    router.get('/v1/logout', userController.logout);
-    router.put('/v1/edit', userController.isAuthenticated, userController.edit);
+    router.post('/signup', userController.signup);
+    router.post('/login', userController.login);
+    router.get('/logout', userController.logout);
+    router.put('/edit', userController.isAuthenticated, userController.edit);
 
     /**
-     * @api {get} / Home
+     * @api {get} /v1/ Home
      * @apiName Home
      * @apiGroup DefaultController
      *
@@ -38,7 +38,7 @@ module.exports = function(express) {
      *       }
      *     }
      */
-    router.get('/v1/', userController.isAuthenticated, defaultController.home);
+    router.get('/', userController.isAuthenticated, defaultController.home);
 
     return router
 };
