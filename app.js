@@ -5,12 +5,22 @@ var express = require('express'),
     session = require('express-session'),
     bodyParser = require('body-parser'),
     cookieParser = require('cookie-parser'),
-    jsonParser = bodyParser.json();
+    jsonParser = bodyParser.json(),
+    SequelizeStore = require('connect-session-sequelize')(session.Store),
+    sequelize = require('./app/sequelize.js');
 
 var port = process.env.PORT || 3000;
 
 app.use(cookieParser());
-app.use(session({ secret: '4564f6s4fdsfdfd', resave: false, saveUninitialized: false }));
+app.use(session({
+    secret: 'challenge',
+    store: new SequelizeStore({
+        db: sequelize
+    }),
+    proxy: true,
+    resave: true,
+    saveUninitialized: true
+}));
 app.use(jsonParser);
 app.use(bodyParser.urlencoded({
     extended: true
