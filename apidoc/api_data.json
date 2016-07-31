@@ -259,14 +259,14 @@
             "type": "String",
             "optional": false,
             "field": "success.message",
-            "description": "<p>Authentication succeeded.</p>"
+            "description": "<p>Successfully login.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"success\": {\n    \"message\": \"Authentication succeeded.\"\n  }\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"success\": {\n    \"message\": \"Successfully login.\"\n  }\n}",
           "type": "json"
         }
       ]
@@ -315,6 +315,33 @@
     "name": "LogoutUser",
     "group": "User",
     "version": "1.0.0",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "success",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "success.message",
+            "description": "<p>Successfully logout.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"success\": {\n    \"message\": \"Successfully logout.\"\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
     "error": {
       "fields": {
         "403": [

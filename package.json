@@ -20,5 +20,10 @@
   "apidoc": {
     "title": "Desafio apiDoc",
     "url": "http://52.67.112.155/v1"
+  },
+  "devDependencies": {
+    "mocha": "^2.5.3",
+    "should-http": "0.0.4",
+    "supertest": "^2.0.0"
   }
 }
