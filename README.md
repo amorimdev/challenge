@@ -21,3 +21,7 @@ node app.js
 # Run Tests
 mocha
  ```
+
+##Postman
+ - [Collection](https://documenter.getpostman.com/view/209271/collection/2HQv3K)
+ - [Docs](https://documenter.getpostman.com/view/209271/challenge/2HQv3K)
