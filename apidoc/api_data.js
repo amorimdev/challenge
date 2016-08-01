@@ -1166,7 +1166,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"success\": {\n    \"wishlist\": []\n  }\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"success\": {\n    \"wishlists\": []\n  }\n}",
           "type": "json"
         }
       ]

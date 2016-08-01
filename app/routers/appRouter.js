@@ -297,7 +297,7 @@ module.exports = function(express) {
      *     HTTP/1.1 200 OK
      *     {
      *       "success": {
-     *         "wishlist": []
+     *         "wishlists": []
      *       }
      *     }
      *
