@@ -78,16 +78,29 @@ var wishlistController = {
         });
     },
     delete: function (req, res) {
-        Model.Wishlist.destroy({
+        Model.Wishlist.find({
             where: {
                 id: req.params.id,
                 userId: req.user.id
             }
-        }).then(function () {
-            return res.send({success: {message: 'Wishlist successfully deleted.'}});
+        }).then(function (wishlist) {
+            if (!wishlist || wishlist.id != req.params.id) {
+                throw new Error('Wishlist does not found.')
+            }
+
+            Model.Wishlist.destroy({
+                where: {
+                    id: req.params.id,
+                    userId: req.user.id
+                }
+            }).then(function () {
+                return res.send({success: {message: 'Wishlist successfully deleted.'}});
+            }).catch(function(e) {
+                console.log("Got error: " + e.message);
+            });
         }).catch(function(e) {
             console.log("Got error: " + e.message);
-            return res.status(404).send({error: {code: 404, message: 'Wishlist does not found.'}});
+            return res.status(404).send({error: {code: 404, message: e.message}});
         });
     }
 };

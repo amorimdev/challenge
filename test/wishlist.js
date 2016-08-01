@@ -68,7 +68,7 @@ describe('Wishlist', function() {
                     if (err) {
                         throw err;
                     }
-                    id = res.body.wishlist.id;
+                    id = res.body.success.wishlist.id;
                     res.should.have.status(200);
                     done();
                 });
