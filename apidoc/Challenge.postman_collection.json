@@ -1,0 +1,181 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Challenge",
+		"_postman_id": "6d434257-c25e-92dc-9a01-7db1723d14fa",
+		"description": "For more details https://github.com/vaynard/challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Default - Home",
+			"request": {
+				"url": "http://52.67.112.155/v1/",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User - Signup",
+			"request": {
+				"url": "http://52.67.112.155/v1/signup",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Jhonatan Amorim\",\r\n    \"email\": \"amorim.dev@gmail.com\",\r\n    \"password\": \"123\",\r\n    \"zipcode\": \"05735030\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User - Login",
+			"request": {
+				"url": "http://52.67.112.155/v1/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"amorim.dev@gmail.com\",\n    \"password\": \"123\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User - Edit",
+			"request": {
+				"url": "http://52.67.112.155/v1/user",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Jhonatan Amorim\",\r\n    \"email\": \"amorim.dev@gmail.com\",\r\n    \"password\": \"123\",\r\n    \"zipcode\": \"05735030\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User - Logout",
+			"request": {
+				"url": "http://52.67.112.155/v1/logout",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Wishlist Create",
+			"request": {
+				"url": "http://52.67.112.155/v1/wishlist",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"My Wish\",\r\n    \"description\": \"Work on F(X)\",\r\n    \"averageValue\": \"123.45\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Wishlist ListAll",
+			"request": {
+				"url": "http://52.67.112.155/v1/wishlist",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Wishlist List",
+			"request": {
+				"url": "http://52.67.112.155/v1/wishlist/1",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Wishlist Edit",
+			"request": {
+				"url": "http://52.67.112.155/v1/wishlist/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"My Wish\",\r\n    \"description\": \"Work on F(X)\",\r\n    \"averageValue\": \"123.45\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Wishlist Delete",
+			"request": {
+				"url": "http://52.67.112.155/v1/wishlist/1",
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
