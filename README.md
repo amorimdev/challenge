@@ -25,5 +25,5 @@ mocha
  ```
 
 ##Postman
- - [Collection](http://52.67.112.155/Challenge.postman_collection.json)
+ - [Collection](apidoc/Challenge.postman_collection.json)
  - [Docs](https://documenter.getpostman.com/view/209271/challenge/2HQv3K)
