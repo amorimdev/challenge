@@ -16,10 +16,14 @@ var wishlistController = {
                 userId: req.user.id
             }
         }).then(function (wishlist) {
+            if (!wishlist || wishlist.id != req.params.id) {
+                throw new Error('Wishlist does not found.')
+            }
+
             return res.send({success: {wishlist: wishlist}});
         }).catch(function(e) {
             console.log("Got error: " + e.message);
-            return res.status(404).send({error: {code: 404, message: 'Wishlist does not found.'}});
+            return res.status(404).send({error: {code: 404, message: e.message}});
         });
     },
     create: function (req, res) {
@@ -28,7 +32,7 @@ var wishlistController = {
             averageValue = req.body.averageValue;
 
         if (!name || !averageValue) {
-            return res.status(400).send({error: {code: 400, message: 'Please, fill in all the required fields.'}});
+            return res.status(422).send({error: {code: 422, message: 'Please, fill in all the required fields.'}});
         }
 
         var wishlist = {
@@ -38,11 +42,11 @@ var wishlistController = {
             userId: req.user.id
         };
 
-        Model.Wishlist.create(wishlist).then(function() {
-            return res.send({success: {message: 'Wishlist successfully created.'}});
+        Model.Wishlist.create(wishlist).then(function(entity) {
+            return res.send({success: {message: 'Wishlist successfully save.', wishlist: entity}});
         }).catch(function(e) {
             console.log("Got error: " + e.message);
-            return res.status(409).send({error: {code: 409, message: 'Wishlist create failure.'}});
+            return res.status(409).send({error: {code: 409, message: 'Wishlist save failure.'}});
         });
     },
     edit: function (req, res) {
@@ -52,21 +56,25 @@ var wishlistController = {
                 userId: req.user.id
             }
         }).then(function (wishlist) {
+            if (!wishlist || wishlist.id != req.params.id) {
+                throw new Error('Wishlist does not found.')
+            }
+            
             var newWishlist = {
                 name: (req.body.name) ? req.body.name : wishlist.name,
                 description: (req.body.description) ? req.body.description : wishlist.description,
                 averageValue: (req.body.averageValue) ? req.body.averageValue : wishlist.averageValue
             };
 
-            Model.Wishlist.update(newWishlist, {where: {id : wishlist.id}}).then(function() {
-                return res.send({success: {message: 'Wishlist successfully updated.'}});
+            Model.Wishlist.update(newWishlist, {where: {id : wishlist.id}}).then(function(entity) {
+                return res.send({success: {message: 'Wishlist successfully save.', wishlist: entity}});
             }).catch(function(e) {
                 console.log("Got error: " + e.message);
-                return res.status(409).send({error: {code: 409, message: 'Wishlist update failure.'}});
+                return res.status(409).send({error: {code: 409, message: 'Wishlist save failure.'}});
             });
         }).catch(function(e) {
             console.log("Got error: " + e.message);
-            return res.status(404).send({error: {code: 404, message: 'Wishlist does not found.'}});
+            return res.status(404).send({error: {code: 404, message: e.message}});
         });
     },
     delete: function (req, res) {

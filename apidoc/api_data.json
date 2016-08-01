@@ -33,6 +33,8 @@
         }
       ]
     },
+    "filename": "app/routers/appRouter.js",
+    "groupTitle": "Default",
     "error": {
       "fields": {
         "403": [
@@ -66,9 +68,7 @@
           "type": "json"
         }
       ]
-    },
-    "filename": "app/routers/appRouter.js",
-    "groupTitle": "Default"
+    }
   },
   {
     "type": "put",
@@ -118,6 +118,8 @@
         }
       ]
     },
+    "filename": "app/routers/appRouter.js",
+    "groupTitle": "User",
     "success": {
       "fields": {
         "Success 200": [
@@ -133,14 +135,14 @@
             "type": "String",
             "optional": false,
             "field": "success.message",
-            "description": "<p>Account successfully updated.</p>"
+            "description": "<p>Account successfully save.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"success\": {\n    \"message\": \"Account successfully updated.\"\n  }\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"success\": {\n    \"message\": \"Account successfully save.\"\n  }\n}",
           "type": "json"
         }
       ]
@@ -170,6 +172,29 @@
             "description": "<p>Invalid Zip Code.</p>"
           }
         ],
+        "403": [
+          {
+            "group": "403",
+            "type": "Object",
+            "optional": false,
+            "field": "error",
+            "description": ""
+          },
+          {
+            "group": "403",
+            "type": "Number",
+            "optional": false,
+            "field": "error.code",
+            "description": "<p>403</p>"
+          },
+          {
+            "group": "403",
+            "type": "String",
+            "optional": false,
+            "field": "error.message",
+            "description": "<p>You not have permission to access the page.</p>"
+          }
+        ],
         "409": [
           {
             "group": "409",
@@ -197,18 +222,21 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 400 Bad Request\n{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Invalid Zip Code.\"\n  }\n}",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"You not have permission to access the page.\"\n  }\n}",
           "type": "json"
         },
         {
           "title": "Error-Response:",
           "content": "HTTP/1.1 409 Conflict\n{\n  \"error\": {\n    \"code\": 409,\n    \"message\": \"Email already in use.\"\n  }\n}",
           "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 400 Bad Request\n{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Invalid Zip Code.\"\n  }\n}",
+          "type": "json"
         }
       ]
-    },
-    "filename": "app/routers/appRouter.js",
-    "groupTitle": "User"
+    }
   },
   {
     "type": "post",
@@ -271,6 +299,8 @@
         }
       ]
     },
+    "filename": "app/routers/appRouter.js",
+    "groupTitle": "User",
     "error": {
       "fields": {
         "401": [
@@ -300,13 +330,11 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 401 Bad Request\n{\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Authentication failed.\"\n  }\n}",
+          "content": "HTTP/1.1 401 Unauthorized\n{\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Authentication failed.\"\n  }\n}",
           "type": "json"
         }
       ]
-    },
-    "filename": "app/routers/appRouter.js",
-    "groupTitle": "User"
+    }
   },
   {
     "type": "get",
@@ -342,6 +370,8 @@
         }
       ]
     },
+    "filename": "app/routers/appRouter.js",
+    "groupTitle": "User",
     "error": {
       "fields": {
         "403": [
@@ -375,9 +405,7 @@
           "type": "json"
         }
       ]
-    },
-    "filename": "app/routers/appRouter.js",
-    "groupTitle": "User"
+    }
   },
   {
     "type": "post",
@@ -415,7 +443,7 @@
             "type": "String",
             "optional": true,
             "field": "zipcode",
-            "description": "<p>USer Zip Code.</p>"
+            "description": "<p>User Zip Code.</p>"
           }
         ]
       },
@@ -427,6 +455,8 @@
         }
       ]
     },
+    "filename": "app/routers/appRouter.js",
+    "groupTitle": "User",
     "success": {
       "fields": {
         "Success 200": [
@@ -442,14 +472,14 @@
             "type": "String",
             "optional": false,
             "field": "success.message",
-            "description": "<p>Account successfully created.</p>"
+            "description": "<p>Account successfully save.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"success\": {\n    \"message\": \"Account successfully created.\"\n  }\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"success\": {\n    \"message\": \"Account successfully save.\"\n  }\n}",
           "type": "json"
         }
       ]
@@ -476,7 +506,30 @@
             "type": "String",
             "optional": false,
             "field": "error.message",
-            "description": "<p>Please, fill in all the required fields. OR Invalid Zip Code.</p>"
+            "description": "<p>Invalid Zip Code.</p>"
+          }
+        ],
+        "403": [
+          {
+            "group": "403",
+            "type": "Object",
+            "optional": false,
+            "field": "error",
+            "description": ""
+          },
+          {
+            "group": "403",
+            "type": "Number",
+            "optional": false,
+            "field": "error.code",
+            "description": "<p>403</p>"
+          },
+          {
+            "group": "403",
+            "type": "String",
+            "optional": false,
+            "field": "error.message",
+            "description": "<p>You not have permission to access the page.</p>"
           }
         ],
         "409": [
@@ -501,12 +554,40 @@
             "field": "error.message",
             "description": "<p>Email already in use.</p>"
           }
+        ],
+        "422": [
+          {
+            "group": "422",
+            "type": "Object",
+            "optional": false,
+            "field": "error",
+            "description": ""
+          },
+          {
+            "group": "422",
+            "type": "Number",
+            "optional": false,
+            "field": "error.code",
+            "description": "<p>422</p>"
+          },
+          {
+            "group": "422",
+            "type": "String",
+            "optional": false,
+            "field": "error.message",
+            "description": "<p>Please, fill in all the required fields.</p>"
+          }
         ]
       },
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 400 Bad Request\n{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Please, fill in all the required fields.\"\n  }\n}",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"You not have permission to access the page.\"\n  }\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 409 Conflict\n{\n  \"error\": {\n    \"code\": 409,\n    \"message\": \"Email already in use.\"\n  }\n}",
           "type": "json"
         },
         {
@@ -516,13 +597,11 @@
         },
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 409 Conflict\n{\n  \"error\": {\n    \"code\": 409,\n    \"message\": \"Email already in use.\"\n  }\n}",
+          "content": "HTTP/1.1 422 Unprocessable Entity\n{\n  \"error\": {\n    \"code\": 422,\n    \"message\": \"Please, fill in all the required fields.\"\n  }\n}",
           "type": "json"
         }
       ]
-    },
-    "filename": "app/routers/appRouter.js",
-    "groupTitle": "User"
+    }
   },
   {
     "type": "post",
@@ -565,6 +644,8 @@
         }
       ]
     },
+    "filename": "app/routers/appRouter.js",
+    "groupTitle": "Wishlist",
     "success": {
       "fields": {
         "Success 200": [
@@ -580,41 +661,48 @@
             "type": "String",
             "optional": false,
             "field": "success.message",
-            "description": "<p>Wishlist successfully created.</p>"
+            "description": "<p>Wishlist successfully save.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "success.wishlist",
+            "description": "<p>Wishlist entity.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"success\": {\n    \"message\": \"Wishlist successfully created.\"\n  }\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"success\": {\n    \"message\": \"Wishlist successfully save.\",\n    \"wishlist\": {}\n  }\n}",
           "type": "json"
         }
       ]
     },
     "error": {
       "fields": {
-        "400": [
+        "403": [
           {
-            "group": "400",
+            "group": "403",
             "type": "Object",
             "optional": false,
             "field": "error",
             "description": ""
           },
           {
-            "group": "400",
+            "group": "403",
             "type": "Number",
             "optional": false,
             "field": "error.code",
-            "description": "<p>400</p>"
+            "description": "<p>403</p>"
           },
           {
-            "group": "400",
+            "group": "403",
             "type": "String",
             "optional": false,
             "field": "error.message",
-            "description": "<p>Please, fill in all the required fields</p>"
+            "description": "<p>You not have permission to access the page.</p>"
           }
         ],
         "409": [
@@ -637,25 +725,51 @@
             "type": "String",
             "optional": false,
             "field": "error.message",
-            "description": "<p>Wishlist create failure.</p>"
+            "description": "<p>Wishlist save failure.</p>"
+          }
+        ],
+        "422": [
+          {
+            "group": "422",
+            "type": "Object",
+            "optional": false,
+            "field": "error",
+            "description": ""
+          },
+          {
+            "group": "422",
+            "type": "Number",
+            "optional": false,
+            "field": "error.code",
+            "description": "<p>422</p>"
+          },
+          {
+            "group": "422",
+            "type": "String",
+            "optional": false,
+            "field": "error.message",
+            "description": "<p>Please, fill in all the required fields.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 400 Bad Request\n{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Please, fill in all the required fields.\"\n  }\n}",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"You not have permission to access the page.\"\n  }\n}",
           "type": "json"
         },
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 409 Forbidden\n{\n  \"error\": {\n    \"code\": 409,\n    \"message\": \"Wishlist create failure.\"\n  }\n}",
+          "content": "HTTP/1.1 422 Unprocessable Entity\n{\n  \"error\": {\n    \"code\": 422,\n    \"message\": \"Please, fill in all the required fields.\"\n  }\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 409 Conflict\n{\n  \"error\": {\n    \"code\": 409,\n    \"message\": \"Wishlist save failure.\"\n  }\n}",
           "type": "json"
         }
       ]
-    },
-    "filename": "app/routers/appRouter.js",
-    "groupTitle": "Wishlist"
+    }
   },
   {
     "type": "delete",
@@ -691,8 +805,33 @@
         }
       ]
     },
+    "filename": "app/routers/appRouter.js",
+    "groupTitle": "Wishlist",
     "error": {
       "fields": {
+        "403": [
+          {
+            "group": "403",
+            "type": "Object",
+            "optional": false,
+            "field": "error",
+            "description": ""
+          },
+          {
+            "group": "403",
+            "type": "Number",
+            "optional": false,
+            "field": "error.code",
+            "description": "<p>403</p>"
+          },
+          {
+            "group": "403",
+            "type": "String",
+            "optional": false,
+            "field": "error.message",
+            "description": "<p>You not have permission to access the page.</p>"
+          }
+        ],
         "404": [
           {
             "group": "404",
@@ -720,13 +859,16 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 404 Forbidden\n{\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"Wishlist does not found.\"\n  }\n}",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"You not have permission to access the page.\"\n  }\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"Wishlist does not found.\"\n  }\n}",
           "type": "json"
         }
       ]
-    },
-    "filename": "app/routers/appRouter.js",
-    "groupTitle": "Wishlist"
+    }
   },
   {
     "type": "put",
@@ -769,6 +911,8 @@
         }
       ]
     },
+    "filename": "app/routers/appRouter.js",
+    "groupTitle": "Wishlist",
     "success": {
       "fields": {
         "Success 200": [
@@ -784,20 +928,50 @@
             "type": "String",
             "optional": false,
             "field": "success.message",
-            "description": "<p>Wishlist successfully updated.</p>"
+            "description": "<p>Wishlist successfully save.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "success.wishlist",
+            "description": "<p>Wishlist entity.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"success\": {\n    \"message\": \"Wishlist successfully updated.\"\n  }\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"success\": {\n    \"message\": \"Wishlist successfully save.\",\n    \"wishlist\": {}\n  }\n}",
           "type": "json"
         }
       ]
     },
     "error": {
       "fields": {
+        "403": [
+          {
+            "group": "403",
+            "type": "Object",
+            "optional": false,
+            "field": "error",
+            "description": ""
+          },
+          {
+            "group": "403",
+            "type": "Number",
+            "optional": false,
+            "field": "error.code",
+            "description": "<p>403</p>"
+          },
+          {
+            "group": "403",
+            "type": "String",
+            "optional": false,
+            "field": "error.message",
+            "description": "<p>You not have permission to access the page.</p>"
+          }
+        ],
         "404": [
           {
             "group": "404",
@@ -841,25 +1015,28 @@
             "type": "String",
             "optional": false,
             "field": "error.message",
-            "description": "<p>Wishlist update failure.</p>"
+            "description": "<p>Wishlist save failure.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 404 Forbidden\n{\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"Wishlist does not found.\"\n  }\n}",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"You not have permission to access the page.\"\n  }\n}",
           "type": "json"
         },
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 409 Forbidden\n{\n  \"error\": {\n    \"code\": 409,\n    \"message\": \"Wishlist update failure.\"\n  }\n}",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"Wishlist does not found.\"\n  }\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 409 Conflict\n{\n  \"error\": {\n    \"code\": 409,\n    \"message\": \"Wishlist save failure.\"\n  }\n}",
           "type": "json"
         }
       ]
-    },
-    "filename": "app/routers/appRouter.js",
-    "groupTitle": "Wishlist"
+    }
   },
   {
     "type": "get",
@@ -895,8 +1072,33 @@
         }
       ]
     },
+    "filename": "app/routers/appRouter.js",
+    "groupTitle": "Wishlist",
     "error": {
       "fields": {
+        "403": [
+          {
+            "group": "403",
+            "type": "Object",
+            "optional": false,
+            "field": "error",
+            "description": ""
+          },
+          {
+            "group": "403",
+            "type": "Number",
+            "optional": false,
+            "field": "error.code",
+            "description": "<p>403</p>"
+          },
+          {
+            "group": "403",
+            "type": "String",
+            "optional": false,
+            "field": "error.message",
+            "description": "<p>You not have permission to access the page.</p>"
+          }
+        ],
         "404": [
           {
             "group": "404",
@@ -924,13 +1126,16 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 404 Forbidden\n{\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"Wishlist does not found.\"\n  }\n}",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"You not have permission to access the page.\"\n  }\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"Wishlist does not found.\"\n  }\n}",
           "type": "json"
         }
       ]
-    },
-    "filename": "app/routers/appRouter.js",
-    "groupTitle": "Wishlist"
+    }
   },
   {
     "type": "get",
@@ -966,6 +1171,8 @@
         }
       ]
     },
+    "filename": "app/routers/appRouter.js",
+    "groupTitle": "Wishlist",
     "error": {
       "fields": {
         "403": [
@@ -999,8 +1206,6 @@
           "type": "json"
         }
       ]
-    },
-    "filename": "app/routers/appRouter.js",
-    "groupTitle": "Wishlist"
+    }
   }
 ]

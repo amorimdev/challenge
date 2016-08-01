@@ -39,7 +39,7 @@ var userController = {
             zipcode = req.body.zipcode;
 
         if (!name || !email || !password) {
-            return res.status(400).send({error: {code: 400, message: 'Please, fill in all the required fields.'}});
+            return res.status(422).send({error: {code: 422, message: 'Please, fill in all the required fields.'}});
         }
 
         var salt = bcrypt.genSaltSync(10),
@@ -122,7 +122,7 @@ var userController = {
     },
     create: function (user, res) {
         Model.User.create(user).then(function() {
-            return res.send({success: {message: 'Account successfully created.'}});
+            return res.send({success: {message: 'Account successfully save.'}});
         }).catch(function(e) {
             console.log("Got error: " + e.message);
             return res.status(409).send({error: {code: 409, message: 'Email already in use.'}});
@@ -130,7 +130,7 @@ var userController = {
     },
     update: function (id, data, res) {
         Model.User.update(data, {where: {id : id}}).then(function() {
-            return res.send({success: {message: 'Account successfully updated.'}});
+            return res.send({success: {message: 'Account successfully save.'}});
         }).catch(function(e) {
             console.log("Got error: " + e.message);
             return res.status(409).send({error: {code: 409, message: 'Email already in use.'}});

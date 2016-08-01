@@ -1,10 +1,10 @@
 var should  = require('should-http'),
     request = require('supertest');
 
-describe('User', function() {
-    var url = 'http://52.67.112.155/v1';
-    var cookie;
+var url = 'http://52.67.112.155/v1';
+var cookie;
 
+describe('User', function() {
     describe('Login', function() {
         it('Should Return Error: Authentication failed.', function (done) {
             var user = {
@@ -70,16 +70,16 @@ describe('User', function() {
             request(url)
                 .post('/signup')
                 .send({})
-                .expect(400)
+                .expect(422)
                 .end(function(err, res) {
                     if (err) {
                         throw err;
                     }
-                    res.should.have.status(400);
+                    res.should.have.status(422);
                     done();
                 });
         });
-        it('Should Return Success: Account successfully created.', function(done) {
+        it('Should Return Success: Account successfully save.', function(done) {
             var d = new Date(),
                 user = {
                     name: 'user',
@@ -143,7 +143,7 @@ describe('User', function() {
                     done();
                 });
         });
-        it('Should Return Success: Account successfully updated.', function(done){
+        it('Should Return Success: Account successfully save.', function(done){
             var user = {
                 name: 'user',
                 email: 'user@user.com',

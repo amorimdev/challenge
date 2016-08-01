@@ -6,60 +6,28 @@ module.exports = function(express) {
     var router = express.Router();
 
     /**
-     * @api {post} /signup                      Signup
-     * @apiName SignupUser
-     * @apiGroup User
-     * @apiVersion 1.0.0
+     * @apiDefine ForbiddenError
      *
-     * @apiParam {String} name                  User Name.
-     * @apiParam {String} email                 User Email.
-     * @apiParam {String} password              User Password.
-     * @apiParam {String} [zipcode]             USer Zip Code.
+     * @apiError (403) {Object} error
+     * @apiError (403) {Number} error.code      403
+     * @apiError (403) {String} error.message   You not have permission to access the page.
      *
-     * @apiParamExample {json} Request-Example:
+     * @apiErrorExample Error-Response:
+     *     HTTP/1.1 403 Forbidden
      *     {
-     *       "name": "Jhonatan Amorim",
-     *       "email": "amorim.dev@gmail.com",
-     *       "password": "123",
-     *       "zipcode": "05735030"
-     *     }
-     *
-     * @apiSuccess {Object} success
-     * @apiSuccess {String} success.message     Account successfully created.
-     *
-     * @apiSuccessExample Success-Response:
-     *     HTTP/1.1 200 OK
-     *     {
-     *       "success": {
-     *         "message": "Account successfully created."
+     *       "error": {
+     *         "code": 403,
+     *         "message": "You not have permission to access the page."
      *       }
      *     }
-     *
-     * @apiError (400) {Object} error
-     * @apiError (400) {Number} error.code      400
-     * @apiError (400) {String} error.message   Please, fill in all the required fields. OR Invalid Zip Code.
+     */
+
+    /**
+     * @apiDefine EmailAlreadyInUseError
      *
      * @apiError (409) {Object} error
      * @apiError (409) {Number} error.code      409
      * @apiError (409) {String} error.message   Email already in use.
-     *
-     * @apiErrorExample Error-Response:
-     *     HTTP/1.1 400 Bad Request
-     *     {
-     *       "error": {
-     *         "code": 400,
-     *         "message": "Please, fill in all the required fields."
-     *       }
-     *     }
-     *
-     * @apiErrorExample Error-Response:
-     *     HTTP/1.1 400 Bad Request
-     *     {
-     *       "error": {
-     *         "code": 400,
-     *         "message": "Invalid Zip Code."
-     *       }
-     *     }
      *
      * @apiErrorExample Error-Response:
      *     HTTP/1.1 409 Conflict
@@ -69,6 +37,149 @@ module.exports = function(express) {
      *         "message": "Email already in use."
      *       }
      *     }
+     */
+
+    /**
+     * @apiDefine InvalidZipCodeError
+     *
+     * @apiError (400) {Object} error
+     * @apiError (400) {Number} error.code      400
+     * @apiError (400) {String} error.message   Invalid Zip Code.
+     *
+     * @apiErrorExample Error-Response:
+     *     HTTP/1.1 400 Bad Request
+     *     {
+     *       "error": {
+     *         "code": 400,
+     *         "message": "Invalid Zip Code."
+     *       }
+     *     }
+     */
+
+    /**
+     * @apiDefine RequiredFieldsError
+     *
+     * @apiError (422) {Object} error
+     * @apiError (422) {Number} error.code      422
+     * @apiError (422) {String} error.message   Please, fill in all the required fields.
+     *
+     * @apiErrorExample Error-Response:
+     *     HTTP/1.1 422 Unprocessable Entity
+     *     {
+     *       "error": {
+     *         "code": 422,
+     *         "message": "Please, fill in all the required fields."
+     *       }
+     *     }
+     */
+
+    /**
+     * @apiDefine AuthenticationFailedError
+     *
+     * @apiError (401) {Object} error
+     * @apiError (401) {Number} error.code      401
+     * @apiError (401) {String} error.message   Authentication failed.
+     *
+     * @apiErrorExample Error-Response:
+     *     HTTP/1.1 401 Unauthorized
+     *     {
+     *       "error": {
+     *         "code": 401,
+     *         "message": "Authentication failed."
+     *       }
+     *     }
+     */
+
+    /**
+     * @apiDefine AccountSuccessfullySave
+     *
+     * @apiSuccess {Object} success
+     * @apiSuccess {String} success.message     Account successfully save.
+     *
+     * @apiSuccessExample Success-Response:
+     *     HTTP/1.1 200 OK
+     *     {
+     *       "success": {
+     *         "message": "Account successfully save."
+     *       }
+     *     }
+     */
+
+    /**
+     * @apiDefine WishlistNotFoundError
+     *
+     * @apiError (404) {Object} error
+     * @apiError (404) {Number} error.code      404
+     * @apiError (404) {String} error.message   Wishlist does not found.
+     *
+     * @apiErrorExample Error-Response:
+     *     HTTP/1.1 404 Not Found
+     *     {
+     *       "error": {
+     *         "code": 404,
+     *         "message": "Wishlist does not found."
+     *       }
+     *     }
+     */
+
+    /**
+     * @apiDefine WishlistSaveError
+     *
+     * @apiError (409) {Object} error
+     * @apiError (409) {Number} error.code      409
+     * @apiError (409) {String} error.message   Wishlist save failure.
+     *
+     * @apiErrorExample Error-Response:
+     *     HTTP/1.1 409 Conflict
+     *     {
+     *       "error": {
+     *         "code": 409,
+     *         "message": "Wishlist save failure."
+     *       }
+     *     }
+     */
+
+    /**
+     * @apiDefine WishlistSaveSuccess
+     *
+     * @apiSuccess {Object} success
+     * @apiSuccess {String} success.message     Wishlist successfully save.
+     * @apiSuccess {Object} success.wishlist    Wishlist entity.
+     *
+     * @apiSuccessExample Success-Response:
+     *     HTTP/1.1 200 OK
+     *     {
+     *       "success": {
+     *         "message": "Wishlist successfully save.",
+     *         "wishlist": {}
+     *       }
+     *     }
+     */
+
+    /**
+     * @api {post} /signup                      Signup
+     * @apiName SignupUser
+     * @apiGroup User
+     * @apiVersion 1.0.0
+     *
+     * @apiParam {String} name                  User Name.
+     * @apiParam {String} email                 User Email.
+     * @apiParam {String} password              User Password.
+     * @apiParam {String} [zipcode]             User Zip Code.
+     *
+     * @apiParamExample {json} Request-Example:
+     *     {
+     *       "name": "Jhonatan Amorim",
+     *       "email": "amorim.dev@gmail.com",
+     *       "password": "123",
+     *       "zipcode": "05735030"
+     *     }
+     *
+     * @apiUse AccountSuccessfullySave
+     * @apiUse ForbiddenError
+     * @apiUse EmailAlreadyInUseError
+     * @apiUse InvalidZipCodeError
+     * @apiUse RequiredFieldsError
      */
     router.post('/signup', userController.signup);
 
@@ -98,18 +209,7 @@ module.exports = function(express) {
      *       }
      *     }
      *
-     * @apiError (401) {Object} error
-     * @apiError (401) {Number} error.code      401
-     * @apiError (401) {String} error.message   Authentication failed.
-     *
-     * @apiErrorExample Error-Response:
-     *     HTTP/1.1 401 Bad Request
-     *     {
-     *       "error": {
-     *         "code": 401,
-     *         "message": "Authentication failed."
-     *       }
-     *     }
+     * @apiUse AuthenticationFailedError
      */
     router.post('/login', userController.login);
 
@@ -130,18 +230,7 @@ module.exports = function(express) {
      *       }
      *     }
      *
-     * @apiError (403) {Object} error
-     * @apiError (403) {Number} error.code      403
-     * @apiError (403) {String} error.message   You not have permission to access the page.
-     *
-     * @apiErrorExample Error-Response:
-     *     HTTP/1.1 403 Forbidden
-     *     {
-     *       "error": {
-     *         "code": 403,
-     *         "message": "You not have permission to access the page."
-     *       }
-     *     }
+     * @apiUse ForbiddenError
      */
     router.get('/logout', userController.isAuthenticated, userController.logout);
 
@@ -164,42 +253,10 @@ module.exports = function(express) {
      *       "zipcode": "05735030"
      *     }
      *
-     * @apiSuccess {Object} success
-     * @apiSuccess {String} success.message     Account successfully updated.
-     *
-     * @apiSuccessExample Success-Response:
-     *     HTTP/1.1 200 OK
-     *     {
-     *       "success": {
-     *         "message": "Account successfully updated."
-     *       }
-     *     }
-     *
-     * @apiError (400) {Object} error
-     * @apiError (400) {Number} error.code      400
-     * @apiError (400) {String} error.message   Invalid Zip Code.
-     *
-     * @apiError (409) {Object} error
-     * @apiError (409) {Number} error.code      409
-     * @apiError (409) {String} error.message   Email already in use.
-     *
-     * @apiErrorExample Error-Response:
-     *     HTTP/1.1 400 Bad Request
-     *     {
-     *       "error": {
-     *         "code": 400,
-     *         "message": "Invalid Zip Code."
-     *       }
-     *     }
-     *
-     * @apiErrorExample Error-Response:
-     *     HTTP/1.1 409 Conflict
-     *     {
-     *       "error": {
-     *         "code": 409,
-     *         "message": "Email already in use."
-     *       }
-     *     }
+     * @apiUse AccountSuccessfullySave
+     * @apiUse ForbiddenError
+     * @apiUse EmailAlreadyInUseError
+     * @apiUse InvalidZipCodeError
      */
     router.put('/user', userController.isAuthenticated, userController.edit);
 
@@ -220,42 +277,10 @@ module.exports = function(express) {
      *       "averageValue": "123.45"
      *     }
      *
-     * @apiSuccess {Object} success
-     * @apiSuccess {String} success.message     Wishlist successfully created.
-     *
-     * @apiSuccessExample Success-Response:
-     *     HTTP/1.1 200 OK
-     *     {
-     *       "success": {
-     *         "message": "Wishlist successfully created."
-     *       }
-     *     }
-     *
-     * @apiError (400) {Object} error
-     * @apiError (400) {Number} error.code      400
-     * @apiError (400) {String} error.message   Please, fill in all the required fields
-     *
-     * @apiError (409) {Object} error
-     * @apiError (409) {Number} error.code      409
-     * @apiError (409) {String} error.message   Wishlist create failure.
-     *
-     * @apiErrorExample Error-Response:
-     *     HTTP/1.1 400 Bad Request
-     *     {
-     *       "error": {
-     *         "code": 400,
-     *         "message": "Please, fill in all the required fields."
-     *       }
-     *     }
-     *
-     * @apiErrorExample Error-Response:
-     *     HTTP/1.1 409 Forbidden
-     *     {
-     *       "error": {
-     *         "code": 409,
-     *         "message": "Wishlist create failure."
-     *       }
-     *     }
+     * @apiUse WishlistSaveSuccess
+     * @apiUse ForbiddenError
+     * @apiUse RequiredFieldsError
+     * @apiUse WishlistSaveError
      */
     router.post('/wishlist', userController.isAuthenticated, wishlistController.create);
 
@@ -276,18 +301,7 @@ module.exports = function(express) {
      *       }
      *     }
      *
-     * @apiError (403) {Object} error
-     * @apiError (403) {Number} error.code      403
-     * @apiError (403) {String} error.message   You not have permission to access the page.
-     *
-     * @apiErrorExample Error-Response:
-     *     HTTP/1.1 403 Forbidden
-     *     {
-     *       "error": {
-     *         "code": 403,
-     *         "message": "You not have permission to access the page."
-     *       }
-     *     }
+     * @apiUse ForbiddenError
      */
     router.get('/wishlist', userController.isAuthenticated, wishlistController.listAll);
 
@@ -308,18 +322,8 @@ module.exports = function(express) {
      *       }
      *     }
      *
-     * @apiError (404) {Object} error
-     * @apiError (404) {Number} error.code      404
-     * @apiError (404) {String} error.message   Wishlist does not found.
-     *
-     * @apiErrorExample Error-Response:
-     *     HTTP/1.1 404 Forbidden
-     *     {
-     *       "error": {
-     *         "code": 404,
-     *         "message": "Wishlist does not found."
-     *       }
-     *     }
+     * @apiUse ForbiddenError
+     * @apiUse WishlistNotFoundError
      */
     router.get('/wishlist/:id', userController.isAuthenticated, wishlistController.list);
 
@@ -340,42 +344,11 @@ module.exports = function(express) {
      *       "averageValue": "123.45"
      *     }
      *
-     * @apiSuccess {Object} success
-     * @apiSuccess {String} success.message     Wishlist successfully updated.
+     * @apiUse WishlistSaveSuccess
+     * @apiUse ForbiddenError
+     * @apiUse WishlistNotFoundError
+     * @apiUse WishlistSaveError
      *
-     * @apiSuccessExample Success-Response:
-     *     HTTP/1.1 200 OK
-     *     {
-     *       "success": {
-     *         "message": "Wishlist successfully updated."
-     *       }
-     *     }
-     *
-     * @apiError (404) {Object} error
-     * @apiError (404) {Number} error.code      404
-     * @apiError (404) {String} error.message   Wishlist does not found.
-     *
-     * @apiError (409) {Object} error
-     * @apiError (409) {Number} error.code      409
-     * @apiError (409) {String} error.message   Wishlist update failure.
-     *
-     * @apiErrorExample Error-Response:
-     *     HTTP/1.1 404 Forbidden
-     *     {
-     *       "error": {
-     *         "code": 404,
-     *         "message": "Wishlist does not found."
-     *       }
-     *     }
-     *
-     * @apiErrorExample Error-Response:
-     *     HTTP/1.1 409 Forbidden
-     *     {
-     *       "error": {
-     *         "code": 409,
-     *         "message": "Wishlist update failure."
-     *       }
-     *     }
      */
     router.put('/wishlist/:id', userController.isAuthenticated, wishlistController.edit);
 
@@ -396,18 +369,8 @@ module.exports = function(express) {
      *       }
      *     }
      *
-     * @apiError (404) {Object} error
-     * @apiError (404) {Number} error.code      404
-     * @apiError (404) {String} error.message   Wishlist does not found.
-     *
-     * @apiErrorExample Error-Response:
-     *     HTTP/1.1 404 Forbidden
-     *     {
-     *       "error": {
-     *         "code": 404,
-     *         "message": "Wishlist does not found."
-     *       }
-     *     }
+     * @apiUse ForbiddenError
+     * @apiUse WishlistNotFoundError
      */
     router.delete('/wishlist/:id', userController.isAuthenticated, wishlistController.delete);
 
@@ -428,18 +391,7 @@ module.exports = function(express) {
      *       }
      *     }
      *
-     * @apiError (403) {Object} error
-     * @apiError (403) {Number} error.code      403
-     * @apiError (403) {String} error.message   You not have permission to access the page.
-     *
-     * @apiErrorExample Error-Response:
-     *     HTTP/1.1 403 Forbidden
-     *     {
-     *       "error": {
-     *         "code": 403,
-     *         "message": "You not have permission to access the page."
-     *       }
-     *     }
+     * @apiUse ForbiddenError
      */
     router.get('/', userController.isAuthenticated, defaultController.home);
 
